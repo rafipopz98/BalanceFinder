@@ -1,82 +1,59 @@
-# Engineering Assessment
+This project interacts with ethereum blockchain using ethers.js
 
-## 📝 Objective
+user inputs any wallet address and it will send the following details
 
-The goal of this assessment is to evaluate your ability to:
+-> ETH balance
+-> Formatted balance
+-> Wealth category (e.g., Newbie, Investor, Whale)
+-> Category description
 
-Work with Web3 technologies and integrate blockchain functionality into a decentralized application (dApp).
+Tech Stack
 
----
+-> Node.js
+-> Express.js
+-> ethers.js
 
-## 📌 Task Instructions
+Endpoint
 
-1. **Create a New API Endpoint**
+-> GET /rafiApiTest
 
-   - Add a new API endpoint in `index.js` named:
+It takes a Query Param
 
-     ```
-     [Name]ApiTest
-     ```
+key = address
 
-2. **Smart Contract Interaction**
+value = any Ethereum wallet address
 
-   - Select any **pre-deployed** or **public smart contract** (mainnet or testnet).
-   
-   - Fetch some data (any useful information such as balance, contract state, or public variables).
-   
-   - The logic should fetch data through your new API endpoint.
+example
 
+http://localhost:8080/rafiApiTest?address=0x396343362be2A4dA1cE0C1C210945346fb82Aa49
 
-3. **Output**
+Response
 
-   - The result should be printed to the console.
-   - No need for complex UI or data persistence 
-   - just demonstrate that the data was fetched successfully.
+```
+{
+  success: true,
+  data: {
+   address: '0x396343362be2A4dA1cE0C1C210945346fb82Aa49',
+   balanceEth: 9.895989576297646,
+   balanceFormatted: '9.8960 ETH',
+   category: { label: 'Investor', description: 'Serious holder' }
+  }
+  error:null
+}
+```
 
----
+🛠️ Setup Instructions
 
-## 📤 Submission
+git clone <repo-link>
 
-Once completed, submit one of the following:
+cd <folder-name>
 
-- **short video** recording your work.
-- **screenshots** showing the API call and console result.
-- **Github Link** where your assessment result were pushed.
-
----
-
-## ⏰ Time Expectation
-
-- Estimated time to complete: **30–60 minutes**.
-
----
-
-## ⚙️ Notes
-
-You may use any blockchain provider such as:
-
-  - **ethers.js**
-  - **web3.js**
-  - Any public RPC provider (Infura, Alchemy, QuickNode, etc.)
-  
-Keep your code **clean, simple, and easy to review**.
-
-Handle errors gracefully where possible.
-
----
-## 🚀 Quick Start Guide
-
-To run the project locally:
-
-```bash
-# Clone the repository (if provided)
-git clone [repo-url]
-
-# Move into the project directory
-cd [project-folder]
-
-# Install dependencies
 npm install
 
-# Start the server
+Create .env file:
+
+PORT=8080
+RPC_URL=your_rpc_url_here
+
+Run the server:
 npm start
